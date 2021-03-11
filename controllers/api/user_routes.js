@@ -1,16 +1,18 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const Blog = require('../../models/Blog');
-const User = require('../../models/User');
+// const Blog = require('../../models/Blog');
+// const User = require('../../models/User');
+
+const { User, Blog } = require('../../models');
 
 router.get('/', async (req,res) => {
   try {
     const userData = await User.findAll({
-      // include: [{
-      //   model: Blog,
-      //   where: User.id = Blog.author_id,
-      //   attributes: 'title',
-      // }],
+      include: [{
+        model: Blog,
+        where: User.id = Blog.author_id,
+        attributes: ['title'],
+      }],
     });
     if (!userData.length){
       res.status(200).json('No users found')
