@@ -14,18 +14,23 @@ Blog.init(
     title: {
       type: DataTypes.STRING,
       allowNull: false,
+    },    
+    text: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    date_created: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     author_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'User',
+        model: 'user',
         key: 'id'
       }
-    },
-    text: {
-      type: DataTypes.TEXT,
-      allowNull: false,
     }
   },
   {
