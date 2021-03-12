@@ -1,3 +1,27 @@
-<header>
-    <h1>Dashboard</h1>
-</header>
+<div class="row justify-content-md-center">
+    <div class="col-sm-8">
+        <div class="card mx-auto">
+            <div class="btn" type="button" id="newBlogBtn">Start New Blog</div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+
+        <div class="row justify-content-md-center">
+            <div class="card mx-auto">
+                <a href="/blog/{{id}}">
+                    <div class="card-header">
+                        {{{title}}} {{{date_created}}}
+                    </div>
+                    <div class="card-body">
+                        <p>{{text}}</p>>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        {{#each blogs as |blog|}}
+        {{> blog-details}}
+        {{/each}}
+
+    </div>
+</div>
