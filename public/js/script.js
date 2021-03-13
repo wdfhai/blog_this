@@ -49,6 +49,21 @@ async function loginHandler(event) {
     }   
 }
 
+async function logoutHandler (event) {
+    const response = await fetch('/api/userRoutes/logout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+  
+    if (response.ok) {
+      document.location.replace('/');
+    } else {
+      alert('Failed to log out.');
+    }
+  };
+  
+  document.querySelector('#logout').addEventListener('click', logout);
+
 async function newBlogHandler(event) {
     event.preventDefault();
 

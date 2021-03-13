@@ -1,8 +1,18 @@
 [
     {
         "id": "1",
-        "name": "Socrates",
-        "email": "socrates@greece.com",
+        "name": "Meliodas",
+        "email": "meli@sds.com",
+        "password": "password"
+    },{
+        "id": "2",
+        "name": "Ban",
+        "email": "ban@sds.com",
+        "password": "password"
+    },{
+        "id": "3",
+        "name": "King",
+        "email": "king@sds.com",
         "password": "password"
     }
 ]
