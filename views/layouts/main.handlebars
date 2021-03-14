@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../public/css/jass.css">
-    <link rel="stylesheet" href="../../public/css/style.css">
-
+    <link rel="stylesheet" href="../../css/jass.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 
 <body>
@@ -22,27 +24,42 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+            {{!-- <div class="navbar-nav">
                 <a class="nav-link" href="#">Home</a>
                 <a class="nav-link" href="#">Dashboard</a>
-                <a class="nav-link" href="#">Login</a>
-                <a class="nav-link" style="display: none;" href="#">Logout</a>
-            </div>
+            </div> --}}
         </div>
+
+        {{#if logged_in}}
+        <div>
+            <a href="/dashboard">Dashboard</a> |
+            <button class="no-button" id="logoutBtn">Logout</button>
+            {{else}}
+            <a href="/login">Login</a>
+        </div>
+        {{/if}}
     </nav>
 
-    <section class="container" id="blog-container">
-
-
+    <section class="container" id="blogContainer">
 
         {{{ body }}}
 
     </section>
 
+    <footer>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-    <script src="./js/script.js"></script>
+    {{!-- <script src="./js/script.js"></script> --}}
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
 </body>
 
 </html>

@@ -17,10 +17,17 @@ body {
   width: 90%;
 }
 
-#blog-container {
+#blogContainer {
   height: 100vh;
   margin: auto;
-  background-color: rgb(92, 90, 90);
+  overflow-y: scroll;
+  background-color: rgb(218, 213, 213);
+}
+
+#blogScroller {
+  height: 600px;
+  border: 2px black solid;
+  overflow-y: scroll;
 }
 
 .card {
@@ -30,7 +37,16 @@ body {
   /* width: 90%; */
 }
 
-#loginFormCard,
+#blogPreviewCards {
+  width: 100%;
+  height: 150px;
+}
+
+#blogPreviewCards.card-body {
+  overflow-y: auto;
+}
+
+#blogPreviewCards #loginFormCard,
 #signUpFormCard {
   background-color: lightgray;
   justify-content: center;

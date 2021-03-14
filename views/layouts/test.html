@@ -7,6 +7,9 @@
     <title>Blog This!</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../public/css/jass.css">
@@ -32,6 +35,63 @@
     </nav>
 
     <section class="container-fluid" id="blog-container">
+
+        <div class="form-row justify-content-md-center">
+            <div class="col-sm-4">
+                <div class="card mx-auto" id="loginFormCard">
+                    <form id="loginForm">
+                        <h2 class="col-sm-12" style="text-align: center;">Please Log In</h2>
+                        <br />
+                        <div class="form-group col-sm-12">
+                            <label for="loginEmail">Email address</label>
+                            <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp"
+                                placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+                        </div>
+                        <br />
+                        <div class="form-group col-sm-12">
+                            <button type="submit" class="btn btn-primary" id="loginBtn">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card mx-auto" id="signUpFormCard">
+                    <form id="signUpForm">
+                        <h2 class="col-sm-12" style="text-align: center;">Please Sign Up</h2>
+                        <br />
+                        <div class="form-group col-sm-12">
+                            <label for="signUpName">Name</label>
+                            <input type="text" class="form-control" id="signUpName" placeholder="Name">
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="signUpEmail">Email address</label>
+                            <input type="email" class="form-control" id="signUpEmail" aria-describedby="emailHelp"
+                                placeholder="Enter email">
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="signUpPassword">Password</label>
+                            <input type="password" class="form-control" id="signUpPassword"
+                                placeholder="Enter Password">
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="matchPassword">Verify Password</label>
+                            <input type="password" class="form-control" id="matchPassword"
+                                placeholder="Enter Password Again">
+                        </div>
+                        <br />
+                        <div class="form-group col-sm-12">
+                            <button type="submit" class="btn btn-primary" id="signUpBtn">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
         {{{ body }}}
 

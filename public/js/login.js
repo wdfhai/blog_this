@@ -21,6 +21,8 @@ async function signUpHandler(event) {
         },
     });
 
+    console.log(response);
+
     if (response.ok) {
         document.location.replace('/dashboard');
     } else {
@@ -36,7 +38,7 @@ async function loginHandler(event) {
     const password = document.querySelector('#loginPassword').value;
 
     if (email && password){
-    const response = await fetch(`/api/users/login`, {
+    const response = await fetch(`/api/users/`, {
         method: 'POST',
         body: JSON.stringify({
         email,
@@ -54,46 +56,10 @@ async function loginHandler(event) {
     }
 };
 
-async function logoutHandler (event) {
-    const response = await fetch('/api/userRoutes/logout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-    });
-  
-    if (response.ok) {
-        document.location.replace('/');
-    } else {
-        alert('Failed to log out.');
-    }
-  };
-  
-  document.querySelector('#logout').addEventListener('click', logout);
+document
+.querySelector('#signUpForm')
+.addEventListener('submit', signUpHandler);
 
-async function newBlogHandler(event) {
-    event.preventDefault();
-
-    const title = document.querySelector('#newBlogTitle').value;
-    const text = document.querySelector('#newBlogText').value;
-
-    const response = await fetch(`/api/blogRoutes`, {
-        method: 'POST',
-        body: JSON.stringify({
-        title,
-        text,
-        }),
-        headers: {
-        'Content-Type': 'application/json',
-        },
-    });
-
-    if (response.ok) {
-        document.location.replace('/');
-    } else {
-        alert('Failed to save your blog.');
-    }   
-}
-  
-document.querySelector('#signUpForm').addEventListener('submit', signUpHandler);
-document.querySelector('#loginForm').addEventListener('submit', loginHandler);
-document.querySelector('#newBlogBtn').addEventListener('submit', newBlogHandler)
-  
+document
+.querySelector('#loginForm')
+.addEventListener('submit', loginHandler);

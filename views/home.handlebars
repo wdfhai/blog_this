@@ -2,29 +2,28 @@
     <div class="col-sm-8">
         <div class="card mx-auto">
             <div class="card-header">
-                <h3>To create a new blog post, please <span><a href="#">Log In</a></span> or <span><a href="#">Sign
+                <h3>To create a new blog post, please <span><a href="/login">Log In</a></span> or <span><a
+                            href="/login">Sign
                             Up</a></span>.</h3>
             </div>
         </div>
     </div>
+    {{#each blogs as |blog| }}
     <div class="col-sm-8">
-
         <div class="row justify-content-md-center">
-            <div class="card mx-auto">
+            <div class="card mx-auto" id="blogPreviewCards">
                 <a href="/blog/{{id}}">
                     <div class="card-header">
-                        {{{title}}} {{{date_created}}}
+                        <p><span>
+                                <h3>{{{blog.title}}}</h3>
+                            </span> by {{{blog.user.name}}} on {{format_date blog.date_created}}</p>
                     </div>
                     <div class="card-body">
-                        <p>{{text}}</p>>
+                        <p>{{blog.text}}</p>
                     </div>
                 </a>
             </div>
         </div>
-
-        {{#each blogs as |blog|}}
-        {{> blog-details}}
-        {{/each}}
-
     </div>
+    {{/each}}
 </div>
