@@ -21,12 +21,29 @@ async function deleteBlogHandler() {
 };
 
 async function editBlogHandler (){
+    
 
 }
 
-async function commentHandler(){
+async function saveCommentHandler(){
+    const comment_text = document.querySelector('#modalCommentText').value;
 
-}
+    const response = await fetch(`api/comments/`, {
+        method: 'POST',
+        body: JSON.stringify({
+            comment_text
+            }),
+            headers: {
+            'Content-Type': 'application/json',
+            },
+        });
+    
+        if (response.ok) {
+            document.location.replace('/blog');
+        } else {
+            alert('Failed to save your comment.');
+        }
+};
 
 document
 .querySelector('#editBtn')
@@ -39,3 +56,7 @@ document
 document
 .querySelector('#commentBtn')
 .addEventListener('submit', commentHandler);
+
+document
+.querySelector('#saveCommentBtn')
+.addEventListener('submit', saveCommentHandler);

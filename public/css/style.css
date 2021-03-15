@@ -66,13 +66,22 @@ body {
 
 #blogCard {
   padding: 20px;
+  background-color: lightgray;
 }
 
 #blogCardHeader {
+  padding: 15px;
 }
 #blogCardBody {
+  padding: 15px;
+  border: 1px solid black;
+  height: 400px;
+  overflow-y: auto;
+  background-color: white;
 }
 #blogCardFooter {
+  padding: 15px;
+  background-color: lightsteelblue;
 }
 
 #loginForm,

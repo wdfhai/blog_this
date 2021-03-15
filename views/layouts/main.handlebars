@@ -24,18 +24,17 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            {{!-- <div class="navbar-nav">
-                <a class="nav-link" href="#">Home</a>
-                <a class="nav-link" href="#">Dashboard</a>
-            </div> --}}
+            <div class="navbar-nav">
+                <a class="nav-link" href="/home">Home</a> |
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+            </div>
         </div>
 
         {{#if logged_in}}
         <div>
-            <a href="/dashboard">Dashboard</a> |
-            <button class="no-button" id="logoutBtn">Logout</button>
+            <a class="button" id="logoutBtn">Logout</a>
             {{else}}
-            <a href="/login">Login</a>
+            <a class="button" href="/login">Login</a>
         </div>
         {{/if}}
     </nav>

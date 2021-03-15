@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Blog } = require('../models');
+const { User, Blog, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 // GET all blogs for homepage
@@ -90,7 +90,10 @@ router.get('/blog/:id', async (req, res) => {
         {
           model: User,
           attributes: ['name',]
-        },
+        },{
+          model: Comment,
+          attributes: ['commenter', 'comment_text']
+        }
       ],
   });
     const blog = dbBlogData.get({ plain: true });
