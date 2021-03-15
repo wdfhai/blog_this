@@ -1,28 +1,6 @@
-async function newBlogHandler(event) {
-    event.preventDefault();
-
-    const title = document.querySelector('#newBlogTitle').value;
-    const text = document.querySelector('#newBlogText').value;
-    const author = User.name;
-
-    const response = await fetch(`/api/blogRoutes`, {
-        method: 'POST',
-        body: JSON.stringify({
-        title,
-        text,
-        author,
-        }),
-        headers: {
-        'Content-Type': 'application/json',
-        },
-    });
-
-    if (response.ok) {
-        document.location.replace('/dashboard');
-    } else {
-        alert('Failed to save your blog.');
-    }   
-};
+async function newBlogRedirect (){
+  document.location.replace('/new-blog');
+}
 
 
 async function deleteBlogHandler(event) {
@@ -47,12 +25,12 @@ async function editBlogHandler ( ){
 }
   
   document
-    .querySelector('#newBlogForm')
-    .addEventListener('submit', newBlogHandler);
+    .querySelector('#newBlogBtn')
+    .addEventListener('click', newBlogRedirect);
   
   document
     .querySelector('.btn-danger')
-    .addEventListener('click', delBlogHandler);
+    .addEventListener('click', deleteBlogHandler);
 
     document
     .querySelector('.btn-success')

@@ -4,7 +4,7 @@ html * {
 }
 
 body {
-  /* background-color: cornflowerblue; */
+  background-color: rgb(218, 213, 213);
 }
 
 .navbar-brand {
@@ -18,10 +18,9 @@ body {
 }
 
 #blogContainer {
-  height: 100vh;
+  height: 90vh;
   margin: auto;
   overflow-y: scroll;
-  background-color: rgb(218, 213, 213);
 }
 
 #blogScroller {
@@ -33,23 +32,31 @@ body {
 .card {
   border: 5px solid black;
   border-radius: 10px;
-  margin: 40px;
-  /* width: 90%; */
+  margin: 30px;
 }
 
 #blogPreviewCards {
   width: 100%;
-  height: 150px;
 }
 
-#blogPreviewCards.card-body {
+#blogPreviewCards .card-body {
   overflow-y: auto;
+  height: 2rem;
+  background-color: lightgray;
 }
 
-#blogPreviewCards #loginFormCard,
-#signUpFormCard {
-  background-color: lightgray;
+#blogPreviewCards #loginCard,
+#signUpCard {
   justify-content: center;
+}
+
+#blogDashboardCards {
+  width: 90%;
+}
+
+#blogDashboardCards .card-body {
+  background-color: lightgrey;
+  color: black;
 }
 
 #newBlogCard {
@@ -57,11 +64,20 @@ body {
   padding: 20px;
 }
 
+#blogCard {
+  padding: 20px;
+}
+
+#blogCardHeader {
+}
+#blogCardBody {
+}
+#blogCardFooter {
+}
+
 #loginForm,
 #signUpForm {
   padding: 20px;
-  /* width: 95%; */
-  /* justify-content: center; */
 }
 
 #newBlogForm {
@@ -73,9 +89,29 @@ body {
   float: none;
 }
 
+#logInForm {
+  height: 1000px;
+  background-color: lightsalmon;
+}
+
 #newBlogBtn {
   background-color: green;
   padding: 0px;
   margin: 0px;
   width: 100%;
+}
+
+#welcomeTitle {
+  margin: 20px;
+}
+
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 30px;
+  background: #222;
+  color: white;
+  text-align: center;
 }

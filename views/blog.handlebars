@@ -1,0 +1,29 @@
+<div class="form-row justify-content-md-center">
+    <div class="col-sm-12">
+        <div class="card mx-auto" id="blogCard">
+            <div class="card-header" id="blogCardHeader">
+                <h2>Title: {{{title}}} {{{name}}}</h2>
+            </div>
+            <div class="card-body" id="blogCardBody">
+                <p>{{{text}}}</p>
+            </div>
+            <div class="card-footer" id="blogCardFooter">
+                {{!-- {{#if logged_in}} --}}
+                <div class=" form-group col-sm-10">
+                    <button type="click" class="btn btn-primary" id="commentBtn">COMMENT</button>
+                </div>
+                <div class="form-group col-sm-10">
+                    <button type="click" class="btn btn-success" id="editBtn">EDIT</button>
+                </div>
+                <div class="form-group col-sm-10">
+                    <button type="click" class="btn btn-danger" id="deleteBtn">DELETE</button>
+                </div>
+                {{!-- {{else}} --}}
+                {{!-- <p>Please log in to comment, edit or delete.</p> --}}
+                {{!-- {{/if}} --}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./js/blog.js"></script>

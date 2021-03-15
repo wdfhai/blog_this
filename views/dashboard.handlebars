@@ -1,8 +1,6 @@
 <div class="row justify-content-md-center">
-    <div class="col-sm-8">
-        <div class="card mx-auto">
-            <h2> Welcome, {{name}}!</h2>
-        </div>
+    <div class="col-sm-8" id="welcomeTitle">
+        <h2> Welcome, {{name}}!</h2>
     </div>
     <br />
     <div class="col-sm-8">
@@ -12,33 +10,27 @@
     </div>
     <br />
     <div class="col-sm-8" id="blogScroller">
-        <div class="card mx-auto">
-            <a href="/blog/{{id}}">
-                <div class="card-header">
-                    {{{title}}} {{{date_created}}}
-                </div>
-                <div class="card-body" id="card-body-preview">
-                    <p>{{text}}</p>
-                </div>
-            </a>
-        </div>
+
 
         {{#if blogs.length}}
 
         {{#each blogs as |blog|}}
 
-        <div class="col-sm-8">
+        <div class="col-sm-12">
             <div class="row justify-content-md-center">
-                <div class="card mx-auto">
+                <div class="card mx-auto" id="blogDashboardCards">
                     <a href="/blog/{{id}}">
                         <div class="card-header">
-                            {{{blog.title}}} {{{blog.date_created}}} Authored by {{{blog.user.name}}} on
-                            {{!-- {{format_date blog.date_created}} --}}
+                            <p><span>
+                                    <h3>{{{blog.title}}}</h3>
+                                </span> by You on {{format_date blog.date_created}}</p>
                         </div>
                         <div class="card-body">
-                            <p>{{blog.text}}</p>>
-                            <button class="btn-success" type="button">EDIT</button>
-                            <button class="btn-danger" type="button">DELETE</button>
+                            <p>{{blog.text}}</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn-success" style="float: right;" type="button">EDIT</button>
+                            <button class="btn-danger" style="float: right;" type="button">DELETE</button>
                         </div>
                     </a>
                 </div>
@@ -46,6 +38,10 @@
         </div>
 
         {{/each}}
+
+        {{else}}
+
+        <h2 style="margin: 30px">You haven't written any blogs!</h2>
 
         {{/if}}
     </div>

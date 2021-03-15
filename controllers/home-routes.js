@@ -1,10 +1,9 @@
 const router = require('express').Router();
 const { User, Blog } = require('../models');
-// Import the custom middleware
 const withAuth = require('../utils/auth');
 
 // GET all blogs for homepage
-router.get('/', async (req, res) => {
+router.get('/home', async (req, res) => {
   try {
     const dbBlogData = await Blog.findAll({
       include: [
@@ -29,20 +28,52 @@ router.get('/', async (req, res) => {
   }
 });
 
+
+// experimental func to get all users in insomnia
+router.get('/all', async (req, res) => {
+  try{
+    const allUsers = await User.findAll();
+
+    res.status(200).json(allUsers)
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+})
+
 // GET one User
 // Use the custom middleware before allowing the user to access the User
-router.get('/user/:id', withAuth, async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    const dbUserData = await User.findByPk(req.params.id, {
+    const userData = await User.findByPk(req.session.user_id, {
       attributes: {exclude: ['password'] },
-      include: [{model: Blog}],
+      include: [{ model: Blog }],
     });
 
-    const User = dbUserData.get({ plain: true });
+    const user = userData.get({ plain: true });
 
     res.render('dashboard', {
       ...user, 
-      loggedIn: true 
+      logged_in: true 
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+//Redirect to new Blog 
+router.get('/new-blog', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: {exclude: ['password'] },
+      include: [{ model: Blog }],
+    });
+
+    const user = userData.get({ plain: true });
+    res.render('new-blog', {
+      ...user,
+      logged_in: true 
     });
   } catch (err) {
     console.log(err);
@@ -62,11 +93,11 @@ router.get('/blog/:id', async (req, res) => {
         },
       ],
   });
-    const Blog = dbBlogData.get({ plain: true });
+    const blog = dbBlogData.get({ plain: true });
 
-    res.render('Blog', { 
+    res.render('blog', { 
       ...blog, 
-      loggedIn: req.session.loggedIn 
+      loggedIn: req.session.logged_in 
     });
   } catch (err) {
     console.log(err);
@@ -75,8 +106,8 @@ router.get('/blog/:id', async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/profile');
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
     return;
   }
 
