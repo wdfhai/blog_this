@@ -20,13 +20,13 @@ body {
 #blogContainer {
   height: 90vh;
   margin: auto;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 #blogScroller {
   height: 600px;
   border: 2px black solid;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .card {
