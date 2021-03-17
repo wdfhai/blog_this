@@ -2,10 +2,7 @@
     <div class="col-sm-8">
         <div class="card text-center mx-auto">
             <div class="card-header">
-                <p>Please <span><a href="/login">Log In</a></span> or <span><a href="/login">Sign
-                            Up</a></span> to create, edit, delete or comment on a blog.</p>
-                <br />
-                <p>Here is a list of our current blog posts. Enjoy!</p>
+                <h3>Home - displaying all current blogs</h3>
             </div>
         </div>
     </div>
@@ -19,9 +16,6 @@
                                 <h3>{{{blog.title}}}</h3>
                             </span> by {{{blog.user.name}}} on {{format_date blog.date_created}}</p>
                     </div>
-                    {{!-- <div class="card-body">
-                        <p>{{blog.text}}</p>
-                    {{!-- </div> --}}
                 </a>
             </div>
         </div>

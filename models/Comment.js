@@ -10,11 +10,7 @@ Comment.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-    },
-    commenter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },    
+    },   
     comment_text: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -26,16 +22,18 @@ Comment.init(
     },
     blog_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'blog',
         key: 'id',
       },
     },
-    author_id: {
+    commenter_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'user',
-        key: 'id'
+        key: 'id',
       },
     }
   },

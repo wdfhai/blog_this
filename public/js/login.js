@@ -4,16 +4,7 @@ async function signUpHandler(event) {
     const name = document.querySelector('#signUpName').value.trim();
     const email = document.querySelector('#signUpEmail').value.trim();
     const password = document.querySelector('#signUpPassword').value.trim();
-    const matchPassword = document.querySelector('#matchPassword').value.trim();
 
-    console.log(name);
-    console.log(email);
-    console.log(password);
-    console.log(matchPassword);
-
-    // if (!password === matchPassword){
-    //     alert("Your passwords don't match. Try again")
-    // } else 
     if (name && email && password){
     const response = await fetch(`/api/users`, {
         method: 'POST',
@@ -30,10 +21,9 @@ async function signUpHandler(event) {
     if (response.ok) {
         document.location.replace('/dashboard');
     } else {
-        alert(response.statusText);
-        console.log(response);
+        signupFailModal();
     }
-  }
+    }
 }
 
 async function loginHandler(event) {
@@ -52,11 +42,22 @@ async function loginHandler(event) {
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
-            alert(response.statusText);
-            console.log(response)
+            loginFailModal();
         }   
     }
 };
+
+async function loginFailModal(){
+    $('#loginFailModal').modal('show');
+}
+
+async function signupFailModal(){
+    $('#signupFailModal').modal('show');
+}
+
+async function pageReload (){
+    location.reload();
+}
 
 document
 .querySelector('#signUpForm')
@@ -65,3 +66,7 @@ document
 document
 .querySelector('#loginForm')
 .addEventListener('submit', loginHandler);
+
+document
+.querySelectorAll('#failModalCloseBtn')
+.addEventListener('click', pageReload);

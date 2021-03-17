@@ -5,22 +5,23 @@
                 <h2>{{{title}}}</h2>
                 <br />
                 <p>written by {{{user.name}}} on {{{format_date date_created}}}.</p>
+                <p id="bId" style="display: none;">{{{id}}}</p>
             </div>
             <div class="card-body" id="blogCardBody">
                 <p>{{{text}}}</p>
             </div>
             <div class="card-footer" id="blogCardFooter">
-                {{#if logged_in}}
-                <div class=" form-group col-sm-10">
+                {{#if loggedIn}}
+                <div class="form-group col-sm-10">
                     <button type="click" class="btn btn-primary" data-toggle="modal" data-target="#commentModal"
                         id="commentBtn">COMMENT</button>
                 </div>
                 <div class="form-group col-sm-10">
-                    <button type="click" class="btn btn-success" data-toggle="modal" data-target="#editModal"
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal"
                         id="editBtn">EDIT</button>
                 </div>
                 <div class="form-group col-sm-10">
-                    <button type="click" class="btn btn-danger" id="deleteBtn">DELETE</button>
+                    <button type="button" class="btn btn-danger" id="deleteBtn">DELETE</button>
                 </div>
                 {{else}}
                 <p>Please log in to comment, edit or delete.</p>
@@ -31,20 +32,25 @@
 </div>
 
 {{#if comments.length}}
+
+
 <div class="form-row justify-content-md-center">
     <div class="col-sm-12">
-        <div class="card mx-auto" id="blogCard">
-            <div class="card-header" id="blogCardHeader">
-                <h2>Comments</h2>
+        <div class="card mx-auto" id="commentCard">
+            <div class="card-header" id="commentCardHeader">
+                <h2>Comments found: {{{comments.length}}}</h2>
             </div>
-            <div class="card-body" id="blogCardBody">
+            <div class="card-body" id="commentCardBody">
                 {{#each comments as |comment|}}
-                <p>
-                    By {{{comments_author}}}
-                </p>
-                <p>
-                    {{{comments_text}}}
-                </p>
+                <div id="commentDiv">
+                    <p>
+                        By {{{commenter_id}}} , on {{{format_date comment.date_created}}}
+                    </p>
+                    <br />
+                    <p>
+                        {{{comment.comment_text}}}
+                    </p>
+                </div>
                 {{/each}}
             </div>
         </div>
@@ -68,7 +74,8 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="commentModalTitle">Leaving comment as {{{name}}}</h5>
+                <h5 class="modal-title" id="commentModalTitle">Commenter: </h5>
+                <input type="text" placeholder="{{{user.name}}}" id="commenterName" readonly>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -91,7 +98,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editModalTitle">Leaving comment as {{{name}}}</h5>
+                <h5 class="modal-title" id="editModalTitle">{{{user.name}}}, edit your blog... </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -108,4 +115,4 @@
     </div>
 </div>
 
-<script src="./js/blog.js"></script>
+<script src="../js/blog.js"></script>

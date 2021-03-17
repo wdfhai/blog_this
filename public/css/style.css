@@ -114,6 +114,16 @@ body {
   margin: 20px;
 }
 
+#commentCardBody {
+  background-color: silver;
+}
+
+#commentDiv {
+  background-color: silver;
+  border-bottom: 1px solid darkblue;
+  padding: 10px;
+}
+
 footer {
   position: fixed;
   width: 100%;

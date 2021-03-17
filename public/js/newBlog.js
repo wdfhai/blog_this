@@ -3,14 +3,14 @@ async function newBlogHandler(event) {
 
     const title = document.querySelector('#newBlogTitle').value;
     const text = document.querySelector('#newBlogText').value;
-    const author = document.querySelector('#newBlogAuthor').placeholder;
+    // const author = document.querySelector('#newBlogAuthor').placeholder;
 
     const response = await fetch(`/api/blogs`, {
         method: 'POST',
         body: JSON.stringify({
         title,
         text,
-        author,
+        // author,
         }),
         headers: {
         'Content-Type': 'application/json',

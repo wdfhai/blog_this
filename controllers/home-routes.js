@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { User, Blog, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
-// GET all blogs for homepage
 router.get('/home', async (req, res) => {
   try {
     const dbBlogData = await Blog.findAll({
@@ -40,9 +39,40 @@ router.get('/all', async (req, res) => {
     console.log(err);
   }
 })
+// experimental func to get all comments in insomnia
+router.get('/allcs', async (req, res) => {
+  try{
+    const allComments = await Comment.findAll();
 
-// GET one User
-// Use the custom middleware before allowing the user to access the User
+    res.status(200).json(allComments)
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+})
+// experimental func to get all blogs in insomnia
+router.get('/allblogs', async (req, res) => {
+  try{
+    const allBlogs = await Blog.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+        {
+          model: Comment,
+          attributes: ['comment_text'],
+        },
+      ],
+    });
+
+    res.status(200).json(allBlogs)
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+})
+
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
@@ -54,15 +84,14 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
     res.render('dashboard', {
       ...user, 
-      logged_in: true 
+      loggedIn: true 
     });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-
-//Redirect to new Blog 
+ 
 router.get('/new-blog', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
@@ -73,7 +102,7 @@ router.get('/new-blog', withAuth, async (req, res) => {
     const user = userData.get({ plain: true });
     res.render('new-blog', {
       ...user,
-      logged_in: true 
+      loggedIn: true 
     });
   } catch (err) {
     console.log(err);
@@ -81,26 +110,25 @@ router.get('/new-blog', withAuth, async (req, res) => {
   }
 });
 
-// GET one Blog
-// Use the custom middleware before allowing the user to access the Blog
 router.get('/blog/:id', async (req, res) => {
   try {
     const dbBlogData = await Blog.findByPk(req.params.id,{
       include: [
         {
           model: User,
-          attributes: ['name',]
+          attributes: ['name','id']
         },{
           model: Comment,
-          attributes: ['commenter', 'comment_text']
+          attributes: ['commenter', 'comment_text', 'date_created']
         }
       ],
   });
+
     const blog = dbBlogData.get({ plain: true });
 
     res.render('blog', { 
       ...blog, 
-      loggedIn: req.session.logged_in 
+      loggedIn: req.session.loggedIn 
     });
   } catch (err) {
     console.log(err);
@@ -109,7 +137,7 @@ router.get('/blog/:id', async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect('/dashboard');
     return;
   }

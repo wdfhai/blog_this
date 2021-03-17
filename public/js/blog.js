@@ -1,12 +1,11 @@
 async function deleteBlogHandler() {
-    const title = document.querySelector('#newBlogTitle').value;
-    const text = document.querySelector('#newBlogText').value;
-    const author = document.querySelector('#newBlogAuthor').placeholder;
+    console.log(this)
+    const id = document.querySelector('#bId').textContent;
 
     const response = await fetch(`/api/blogs/:id`, {
         method: 'DELETE',
         body: JSON.stringify({
-        id
+            id: id,
         }),
         headers: {
         'Content-Type': 'application/json',
@@ -16,22 +15,44 @@ async function deleteBlogHandler() {
     if (response.ok) {
         document.location.replace('/dashboard');
     } else {
-        alert('Failed to save your blog.');
+        alert('Failed to delete your blog.');
     }   
 };
 
 async function editBlogHandler (){
-    
+    const id = document.querySelector('#bId').textContent;
+    const updatedText = document.querySelector('#editModalText').value;
+    console.log(updatedText);
 
-}
+    const response = await fetch(`/api/blogs/:id`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            text: updatedText,
+            id: id,
+        }),
+        headers:{
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (response.ok) {
+        document.location.reload();
+    } else {
+        alert('Failed to edit your blog.');
+    }  
+};
 
 async function saveCommentHandler(){
     const comment_text = document.querySelector('#modalCommentText').value;
+    const commenter = document.querySelector('#commenterName').placeholder;
+    const blog_id = document.querySelector('#bId').textContent;
 
-    const response = await fetch(`api/comments/`, {
+    const response = await fetch(`/api/comments/`, {
         method: 'POST',
         body: JSON.stringify({
-            comment_text
+            commenter,
+            comment_text,
+            blog_id,
             }),
             headers: {
             'Content-Type': 'application/json',
@@ -39,24 +60,25 @@ async function saveCommentHandler(){
         });
     
         if (response.ok) {
-            document.location.replace('/blog');
+            // document.location.replace('/blog');
+            location.reload();
+            alert('saved your comment.');
+            document.querySelector('#modalCommentText').value = '';
         } else {
             alert('Failed to save your comment.');
+            console.log(response)
+            document.querySelector('#modalCommentText').value = '';
         }
 };
 
 document
-.querySelector('#editBtn')
-.addEventListener('submit', editBlogHandler);
+.querySelector('#saveEditBtn')
+.addEventListener('click', editBlogHandler);
 
 document
 .querySelector('#deleteBtn')
-.addEventListener('submit', deleteBlogHandler);
-
-document
-.querySelector('#commentBtn')
-.addEventListener('submit', commentHandler);
+.addEventListener('click', deleteBlogHandler);
 
 document
 .querySelector('#saveCommentBtn')
-.addEventListener('submit', saveCommentHandler);
+.addEventListener('click', saveCommentHandler);

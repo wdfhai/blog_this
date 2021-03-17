@@ -40,15 +40,45 @@
                     <label for="signUpPassword">Password</label>
                     <input type="password" class="form-control" id="signUpPassword" placeholder="Enter Password">
                 </div>
-                <div class="form-group col-sm-12">
-                    <label for="matchPassword">Verify Password</label>
-                    <input type="password" class="form-control" id="matchPassword" placeholder="Enter Password Again">
-                </div>
                 <br />
                 <div class="form-group col-sm-12">
                     <button type="submit" class="btn btn-primary" id="signUpBtn">Submit</button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="loginFailModal" tabindex="-1" role="dialog" aria-labelledby="loginFailModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginFailModalTitle">Login Error</h5>
+                <button type="button" id="failModalCloseBtn" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Failed to log in with these credentials. Please try again.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="signupFailModal" tabindex="-1" role="dialog" aria-labelledby="signupFailModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="signupFailModalTitle">Login Error</h5>
+                <button type="button" id="failModalCloseBtn" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Failed to sign up with these credentials. Please try again.</p>
+            </div>
         </div>
     </div>
 </div>

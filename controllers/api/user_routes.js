@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
 
       req.session.save(() => {
         req.session.user_id = newUser.id;
-        req.session.logged_in = true;
+        req.session.loggedIn = true;
   
         res.status(200).json(newUser);
       }); 
@@ -38,13 +38,13 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Login failed. Please try again!' });
+        .json({ message: 'Invalid credentials. Please try again!' });
       return;
     }
     
       req.session.save(() => {
         req.session.user_id = userData.id;
-        req.session.logged_in = true;
+        req.session.loggedIn = true;
 
         res.status(200).json({ user: userData, message: 'You are now logged in!' });
       });
@@ -56,8 +56,8 @@ router.post('/login', async (req, res) => {
 
 router.post('/logout', (req, res) => {
   console.log('WTH')
-  console.log(req.session.logged_in);
-  if (req.session.logged_in) {
+  console.log(req.session.loggedIn);
+  if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
     });
