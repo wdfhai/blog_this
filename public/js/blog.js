@@ -44,13 +44,11 @@ async function editBlogHandler (){
 
 async function saveCommentHandler(){
     const comment_text = document.querySelector('#modalCommentText').value;
-    const commenter = document.querySelector('#commenterName').placeholder;
-    const blog_id = document.querySelector('#bId').textContent;
+    const blog_id = parseInt(document.querySelector('#bId').textContent);
 
     const response = await fetch(`/api/comments/`, {
         method: 'POST',
         body: JSON.stringify({
-            commenter,
             comment_text,
             blog_id,
             }),

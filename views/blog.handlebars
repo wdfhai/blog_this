@@ -44,7 +44,7 @@
                 {{#each comments as |comment|}}
                 <div id="commentDiv">
                     <p>
-                        By {{{commenter_id}}} , on {{{format_date comment.date_created}}}
+                        By {{{comment.user.name}}} , on {{{format_date comment.date_created}}}
                     </p>
                     <br />
                     <p>
@@ -74,8 +74,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="commentModalTitle">Commenter: </h5>
-                <input type="text" placeholder="{{{user.name}}}" id="commenterName" readonly>
+                <h5 class="modal-title" id="commentModalTitle">Comment </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

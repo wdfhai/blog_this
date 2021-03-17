@@ -42,8 +42,14 @@ router.get('/all', async (req, res) => {
 // experimental func to get all comments in insomnia
 router.get('/allcs', async (req, res) => {
   try{
-    const allComments = await Comment.findAll();
-
+    const allComments = await Comment.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ]
+    });
     res.status(200).json(allComments)
   } catch (err) {
     res.status(500).json(err);
@@ -61,7 +67,7 @@ router.get('/allblogs', async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['comment_text'],
+          attributes: ['comment_text', 'commenter_id'],
         },
       ],
     });
@@ -119,7 +125,13 @@ router.get('/blog/:id', async (req, res) => {
           attributes: ['name','id']
         },{
           model: Comment,
-          attributes: ['commenter', 'comment_text', 'date_created']
+          attributes: ['commenter_id', 'comment_text', 'date_created'],
+          include: [
+            {
+              model: User,
+              attributes: ['name']
+            }
+          ]
         }
       ],
   });
