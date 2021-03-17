@@ -12,6 +12,10 @@
 </div>
 
 <img src="./assets/preview.png" alt="project preview img" style="height: 250px; width: 300px;">
+<br/>
+<img src="./assets/preview2.png" alt="project preview img" style="height: 250px; width: 300px;">
+<br/>
+<img src="./assets/preview3.png" alt="project preview img" style="height: 250px; width: 300px;">
 
 <details open="open">
     <summary>Table of Contents</summary>
