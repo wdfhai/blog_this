@@ -1,5 +1,4 @@
 async function deleteBlogHandler() {
-    console.log(this)
     const id = document.querySelector('#bId').textContent;
 
     const response = await fetch(`/api/blogs/:id`, {
@@ -14,15 +13,12 @@ async function deleteBlogHandler() {
 
     if (response.ok) {
         document.location.replace('/dashboard');
-    } else {
-        alert('Failed to delete your blog.');
-    }   
+    }
 };
 
 async function editBlogHandler (){
     const id = document.querySelector('#bId').textContent;
     const updatedText = document.querySelector('#editModalText').value;
-    console.log(updatedText);
 
     const response = await fetch(`/api/blogs/:id`, {
         method: 'PUT',
@@ -37,9 +33,8 @@ async function editBlogHandler (){
 
     if (response.ok) {
         document.location.reload();
-    } else {
-        alert('Failed to edit your blog.');
-    }  
+    }
+
 };
 
 async function saveCommentHandler(){
@@ -58,13 +53,7 @@ async function saveCommentHandler(){
         });
     
         if (response.ok) {
-            // document.location.replace('/blog');
             location.reload();
-            alert('saved your comment.');
-            document.querySelector('#modalCommentText').value = '';
-        } else {
-            alert('Failed to save your comment.');
-            console.log(response)
             document.querySelector('#modalCommentText').value = '';
         }
 };

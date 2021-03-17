@@ -22,62 +22,10 @@ router.get('/home', async (req, res) => {
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
 
-
-// experimental func to get all users in insomnia
-router.get('/all', async (req, res) => {
-  try{
-    const allUsers = await User.findAll();
-
-    res.status(200).json(allUsers)
-  } catch (err) {
-    res.status(500).json(err);
-    console.log(err);
-  }
-})
-// experimental func to get all comments in insomnia
-router.get('/allcs', async (req, res) => {
-  try{
-    const allComments = await Comment.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ]
-    });
-    res.status(200).json(allComments)
-  } catch (err) {
-    res.status(500).json(err);
-    console.log(err);
-  }
-})
-// experimental func to get all blogs in insomnia
-router.get('/allblogs', async (req, res) => {
-  try{
-    const allBlogs = await Blog.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-        {
-          model: Comment,
-          attributes: ['comment_text', 'commenter_id'],
-        },
-      ],
-    });
-
-    res.status(200).json(allBlogs)
-  } catch (err) {
-    res.status(500).json(err);
-    console.log(err);
-  }
-})
 
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
@@ -93,7 +41,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
       loggedIn: true 
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -111,7 +58,6 @@ router.get('/new-blog', withAuth, async (req, res) => {
       loggedIn: true 
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -143,7 +89,6 @@ router.get('/blog/:id', async (req, res) => {
       loggedIn: req.session.loggedIn 
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });

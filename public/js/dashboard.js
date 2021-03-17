@@ -14,8 +14,6 @@ async function deleteBlogHandler(event) {
   
       if (response.ok) {
         document.location.replace('/dashboard');
-      } else {
-        alert('Failed to delete blog.');
       }
     }
   };

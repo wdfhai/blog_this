@@ -29,13 +29,11 @@ router.put('/:id', async (req,res) => {
 
         res.status(200).json(editBlog);
     } catch (err) {
-        console.log(err);
         res.status(500).json(err);
     }
 })
 
 router.delete('/:id', withAuth, async (req,res) => {
-    console.log(req.body.id)
     try {
         const delBlog  = await Blog.destroy({
             where: {

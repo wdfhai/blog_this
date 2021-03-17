@@ -15,7 +15,6 @@ router.post('/', async (req, res) => {
         res.status(200).json(newUser);
       }); 
   } catch (err) {
-    console.log(err);
     res.status(400).json(err);
   }
 });
@@ -49,20 +48,16 @@ router.post('/login', async (req, res) => {
         res.status(200).json({ user: userData, message: 'You are now logged in!' });
       });
     } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
 
 router.post('/logout', (req, res) => {
-  console.log('WTH')
-  console.log(req.session.loggedIn);
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
     });
   } else {
-    console.log(res);
     res.status(404).json(err);
   }
 });
