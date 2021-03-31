@@ -1,7 +1,7 @@
 <div class="row justify-content-md-center">
     <div class="col-sm-12 col-md-8">
-        <div class="card text-center mx-auto">
-            <div class="card-title" style="padding: 10px;">
+        <div class="card text-center mx-auto" id="homeBrandCards">
+            <div class="card-header" style="padding: 10px;">
                 <h1>Blog This!</h1>
                 <br />
                 <h2>Share your thoughts with the world!</h2>
@@ -9,15 +9,14 @@
         </div>
     </div>
     <div class="col-sm-12 col-md-8">
-        <div class="card text-center mx-auto">
-            <div class="card-title" style="padding: 10px;">
+        <div class="card text-center mx-auto" id="homeBrandCards">
+            <div class="card-header" style="padding: 10px;">
                 <h3>Home - {{{blogs.length}}} currently available.</h3>
             </div>
         </div>
     </div>
     {{#each blogs as |blog| }}
     <div class="col-sm-12 col-md-8">
-        {{!-- <div class="row justify-content-md-center"> --}}
         <div class="card mx-auto" id="blogPreviewCards">
             <a href="/blog/{{id}}">
                 <div class="card-header">
@@ -27,7 +26,6 @@
                 </div>
             </a>
         </div>
-        {{!-- </div> --}}
     </div>
     {{/each}}
 </div>
