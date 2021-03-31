@@ -35,21 +35,20 @@ body {
   margin: 30px;
 }
 
-#blogPreviewCards,
 #homeBrandCards {
+}
+
+#blogPreviewCards {
   width: 100%;
 }
 
-#blogPreviewCards .card-body,
-#homeBrandCards {
+#blogPreviewCards .card-body {
   overflow-y: auto;
   height: 2rem;
   background-color: lightgray;
 }
 
-#blogPreviewCards #loginCard,
-#homeBrandCards,
-#signUpCard {
+#blogPreviewCards #loginCard #signUpCard {
   justify-content: center;
 }
 
