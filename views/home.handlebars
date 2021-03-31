@@ -17,17 +17,17 @@
     </div>
     {{#each blogs as |blog| }}
     <div class="col-sm-12 col-md-8">
-        <div class="row justify-content-md-center">
-            <div class="card mx-auto" id="blogPreviewCards">
-                <a href="/blog/{{id}}">
-                    <div class="card-header">
-                        <p><span>
-                                <h3>{{{blog.title}}}</h3>
-                            </span> by {{{blog.user.name}}} on {{format_date blog.date_created}}</p>
-                    </div>
-                </a>
-            </div>
+        {{!-- <div class="row justify-content-md-center"> --}}
+        <div class="card mx-auto" id="blogPreviewCards">
+            <a href="/blog/{{id}}">
+                <div class="card-header">
+                    <p><span>
+                            <h3>{{{blog.title}}}</h3>
+                        </span> by {{{blog.user.name}}} on {{format_date blog.date_created}}</p>
+                </div>
+            </a>
         </div>
+        {{!-- </div> --}}
     </div>
     {{/each}}
 </div>
