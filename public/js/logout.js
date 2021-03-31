@@ -8,5 +8,6 @@ async function logoutHandler () {
         document.location.replace('/home');
     }
   };
-  
+
+
   document.querySelector('#logoutBtn').addEventListener('click', logoutHandler);
